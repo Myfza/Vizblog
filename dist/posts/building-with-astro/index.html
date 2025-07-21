@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en" class="h-full"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.12.0"><!-- Primary Meta Tags --><title>Building a Blog with Astro: Performance and Simplicity</title><meta name="title" content="Building a Blog with Astro: Performance and Simplicity"><meta name="description" content="Why I chose Astro for this blog and how it delivers exceptional performance while maintaining developer productivity and content management simplicity."><link rel="canonical" href="https://your-blog-site.netlify.app/posts/building-with-astro/"><!-- Open Graph / Facebook --><meta property="og:type" content="website"><meta property="og:url" content="https://your-blog-site.netlify.app/posts/building-with-astro/"><meta property="og:title" content="Building a Blog with Astro: Performance and Simplicity"><meta property="og:description" content="Why I chose Astro for this blog and how it delivers exceptional performance while maintaining developer productivity and content management simplicity."><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://your-blog-site.netlify.app/posts/building-with-astro/"><meta property="twitter:title" content="Building a Blog with Astro: Performance and Simplicity"><meta property="twitter:description" content="Why I chose Astro for this blog and how it delivers exceptional performance while maintaining developer productivity and content management simplicity."><!-- Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/_astro/about.BAzx5gzO.css"></head> <body class="h-full bg-white text-gray-900">  <div class="min-h-screen flex flex-col"> <header class="sticky top-0 z-40 bg-white/80 backdrop-blur-sm border-b border-gray-200"> <nav class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"> <div class="flex items-center justify-between h-16"> <!-- Logo --> <div class="flex-shrink-0"> <a href="/" class="text-xl font-bold text-black hover:text-gray-600 transition-colors">
+Minimal Blog
+</a> </div> <!-- Navigation Links --> <div class="hidden md:block"> <div class="ml-10 flex items-baseline space-x-8"> <a href="/" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors">
+Home
+</a> <a href="/search" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors">
+Search
+</a> <a href="/about" class="text-gray-900 hover:text-gray-600 px-3 py-2 text-sm font-medium transition-colors">
+About
+</a> </div> </div> <!-- Mobile Menu --> <div class="flex items-center space-x-4"> <!-- Mobile menu button --> <div class="md:hidden"> <button type="button" id="mobile-menu-button" class="p-2 rounded-md text-gray-900 hover:bg-gray-100 transition-colors" aria-expanded="false"> <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </button> </div> </div> </div> <!-- Mobile menu --> <div class="md:hidden hidden" id="mobile-menu"> <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-200"> <a href="/" class="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium transition-colors">
+Home
+</a> <a href="/search" class="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium transition-colors">
+Search
+</a> <a href="/about" class="text-gray-900 hover:text-gray-600 block px-3 py-2 text-base font-medium transition-colors">
+About
+</a> </div> </div> </nav> </header> <script type="module">const e=document.getElementById("mobile-menu-button"),t=document.getElementById("mobile-menu");e?.addEventListener("click",()=>{t?.classList.toggle("hidden")});</script> <main class="flex-grow"> <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16"> <!-- Post Header --> <header class="mb-12 text-center"> <time datetime="2024-01-05T00:00:00.000Z" class="text-sm text-gray-500 mb-4 block"> January 5, 2024 </time> <h1 class="text-4xl sm:text-5xl font-bold text-black mb-6 leading-tight"> Building a Blog with Astro: Performance and Simplicity </h1> <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed"> Why I chose Astro for this blog and how it delivers exceptional performance while maintaining developer productivity and content management simplicity. </p> <div class="flex flex-wrap gap-2 justify-center mt-6"> <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800"> astro </span><span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800"> web development </span><span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800"> performance </span><span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800"> static sites </span> </div> </header> <!-- Post Content --> <div class="prose prose-lg prose-gray max-w-none"> <h1 id="building-a-blog-with-astro-performance-and-simplicity">Building a Blog with Astro: Performance and Simplicity</h1>
+<p>When I set out to build this minimalist blog, I needed a framework that matched my design philosophy—powerful yet simple, fast yet flexible. After evaluating various static site generators, <strong>Astro</strong> emerged as the perfect choice.</p>
+<h2 id="why-astro">Why Astro?</h2>
+<p>Astro represents a fundamental shift in how we think about building websites. Instead of shipping entire JavaScript frameworks to users, it generates static HTML by default and only hydrates components that need interactivity.</p>
+<h3 id="the-performance-advantage">The Performance Advantage</h3>
+<ul>
+<li><strong>Zero JavaScript by default</strong>: Pages load instantly with pure HTML and CSS</li>
+<li><strong>Partial hydration</strong>: Only interactive components load JavaScript</li>
+<li><strong>Optimized builds</strong>: Automatic code splitting and tree shaking</li>
+<li><strong>Image optimization</strong>: Built-in responsive image handling</li>
+</ul>
+<h2 id="content-collections-a-game-changer">Content Collections: A Game Changer</h2>
+<p>One of Astro’s standout features is its content collections system. For a blog, this means:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;" tabindex="0" data-language="typescript"><code><span class="line"><span style="color:#6A737D">// src/content/config.ts</span></span>
+<span class="line"><span style="color:#F97583">import</span><span style="color:#E1E4E8"> { defineCollection, z } </span><span style="color:#F97583">from</span><span style="color:#9ECBFF"> 'astro:content'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">const</span><span style="color:#79B8FF"> posts</span><span style="color:#F97583"> =</span><span style="color:#B392F0"> defineCollection</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">  type: </span><span style="color:#9ECBFF">'content'</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#E1E4E8">  schema: z.</span><span style="color:#B392F0">object</span><span style="color:#E1E4E8">({</span></span>
+<span class="line"><span style="color:#E1E4E8">    title: z.</span><span style="color:#B392F0">string</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">    description: z.</span><span style="color:#B392F0">string</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">    publishDate: z.</span><span style="color:#B392F0">date</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">    tags: z.</span><span style="color:#B392F0">array</span><span style="color:#E1E4E8">(z.</span><span style="color:#B392F0">string</span><span style="color:#E1E4E8">()).</span><span style="color:#B392F0">optional</span><span style="color:#E1E4E8">(),</span></span>
+<span class="line"><span style="color:#E1E4E8">  }),</span></span>
+<span class="line"><span style="color:#E1E4E8">});</span></span></code></pre>
+<p>This approach provides type safety, automatic frontmatter validation, and excellent developer experience when working with markdown content.</p>
+<h2 id="the-developer-experience">The Developer Experience</h2>
+<h3 id="file-based-routing">File-Based Routing</h3>
+<p>Astro’s routing system is intuitive—create a file in <code>src/pages/</code>, and it becomes a route. For dynamic content like blog posts, you can use:</p>
+<ul>
+<li><code>[slug].astro</code> for dynamic routes</li>
+<li><code>[...path].astro</code> for catch-all routes</li>
+<li>API routes for data endpoints</li>
+</ul>
+<h3 id="component-islands-architecture">Component Islands Architecture</h3>
+<p>The “islands” architecture allows you to use any UI framework (React, Vue, Svelte) for interactive components while keeping the rest of your site static. This selective hydration approach delivers optimal performance.</p>
+<h2 id="styling-with-purpose">Styling with Purpose</h2>
+<p>Pairing Astro with Tailwind CSS creates a powerful combination:</p>
+<ul>
+<li><strong>Utility-first</strong>: Rapid prototyping and consistent spacing</li>
+<li><strong>Purging</strong>: Unused styles are automatically removed</li>
+<li><strong>Dark mode</strong>: Built-in support for theme switching</li>
+<li><strong>Typography</strong>: Beautiful defaults for content-heavy sites</li>
+</ul>
+<h2 id="seo-and-meta-management">SEO and Meta Management</h2>
+<p>Astro makes SEO optimization straightforward with:</p>
+<ul>
+<li>Automatic sitemap generation</li>
+<li>Built-in support for meta tags and Open Graph data</li>
+<li>RSS feed generation for blog content</li>
+<li>Structured data markup support</li>
+</ul>
+<h2 id="deployment-ready">Deployment Ready</h2>
+<p>The build process generates a completely static site that can be deployed anywhere:</p>
+<ul>
+<li><strong>Netlify</strong>: Zero-config deployments with form handling</li>
+<li><strong>Vercel</strong>: Seamless integration with GitHub</li>
+<li><strong>GitHub Pages</strong>: Free hosting for open-source projects</li>
+<li><strong>Any CDN</strong>: Standard HTML, CSS, and JavaScript output</li>
+</ul>
+<h2 id="the-result">The Result</h2>
+<p>This blog loads in milliseconds, scores perfect Lighthouse ratings, and provides an excellent reading experience across all devices. The development workflow is smooth, content management is simple, and the architecture scales effortlessly.</p>
+<p>Astro proves that you don’t need to sacrifice performance for developer experience or vice versa. It’s a framework that respects both your users’ time and your development process—a perfect match for minimalist principles.</p> </div> <!-- Post Navigation --> <footer class="mt-16 pt-8 border-t border-gray-200"> <nav class="flex justify-between items-center"> <a href="/" class="inline-flex items-center text-gray-600 hover:text-black transition-colors"> <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path> </svg>
+Back to all posts
+</a> <div class="flex space-x-4"> <a href="https://twitter.com/intent/tweet" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors" aria-label="Share on Twitter"> <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"> <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path> </svg> </a> </div> </nav> </footer> </article> </main> <footer class="bg-white border-t border-gray-200 mt-auto"> <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8"> <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"> <!-- Copyright --> <div class="text-sm text-gray-600">
+© 2025 Minimal Blog. Built with ❤️ and Astro.
+</div> <!-- Social Links --> <div class="flex space-x-6"> <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors" aria-label="GitHub"> <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path> </svg> </a> <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-black transition-colors" aria-label="Twitter"> <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path> </svg> </a> <a href="/rss.xml" class="text-gray-600 hover:text-black transition-colors" aria-label="RSS Feed"> <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path d="M6.503 20.752c0 1.794-1.456 3.248-3.251 3.248-1.796 0-3.252-1.454-3.252-3.248 0-1.794 1.456-3.248 3.252-3.248 1.795.001 3.251 1.454 3.251 3.248zm-6.503-12.572v4.811c6.05.062 10.96 4.966 11.022 11.009h4.817c-.062-8.71-7.118-15.758-15.839-15.82zm0-3.368c10.58.046 19.152 8.594 19.183 19.188h4.817c-.03-13.231-10.755-23.954-24-24v4.812z"></path> </svg> </a> </div> </div> </div> </footer> </div>  </body></html>

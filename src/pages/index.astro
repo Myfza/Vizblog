@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import PostCard from '../components/PostCard.astro';
+
+// Get all posts and sort by publish date
+const allPosts = await getCollection('posts', ({ data }) => {
+  return data.draft !== true;
+});
+
+const sortedPosts = allPosts.sort((a, b) => 
+  b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout 
+  title="Minimal Blog - Thoughts on Design & Development"
+  description="A minimalist blog focused on design, development, and the beauty of simplicity. Less noise, more signal."
+>
+  <div class="min-h-screen flex flex-col">
+    <Header />
+    
+    <main class="flex-grow">
+      <!-- Hero Section -->
+      <Hero />
+      
+      <!-- Posts Section -->
+      <section id="posts" class="py-16 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-black mb-4">
+              Latest Posts
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+              Insights on minimalist design, modern web development, and creating meaningful digital experiences.
+            </p>
+          </div>
+          
+          <!-- Posts Grid -->
+          <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {sortedPosts.map((post) => (
+              <PostCard
+                title={post.data.title}
+                description={post.data.description}
+                publishDate={post.data.publishDate}
+                slug={post.slug}
+                tags={post.data.tags}
+              />
+            ))}
+          </div>
+          
+          {sortedPosts.length === 0 && (
+            <div class="text-center py-12">
+              <p class="text-gray-500">
+                No posts published yet. Check back soon!
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+  </div>
+</BaseLayout>

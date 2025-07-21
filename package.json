@@ -1,0 +1,27 @@
+{
+  "name": "minimalist-astro-blog",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A minimalist blog built with Astro framework",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.4.1",
+    "@astrojs/tailwind": "^5.1.5",
+    "@tailwindcss/typography": "^0.5.15",
+    "@types/node": "^22.16.5",
+    "astro": "^5.2.5",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

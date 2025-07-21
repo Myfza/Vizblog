@@ -1,0 +1,310 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+// Get all posts for search functionality
+const allPosts = await getCollection('posts', ({ data }) => {
+  return data.draft !== true;
+});
+---
+
+<BaseLayout
+  title="Search - Minimal Blog"
+  description="Search through all blog posts and articles on Minimal Blog."
+>
+  <div class="min-h-screen flex flex-col">
+    <Header />
+    
+    <main class="flex-grow">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <!-- Breadcrumb Navigation -->
+        <nav class="mb-8" aria-label="Breadcrumb">
+          <ol class="flex items-center space-x-2 text-sm text-gray-600">
+            <li>
+              <a href="/" class="hover:text-black transition-colors">
+                Home
+              </a>
+            </li>
+            <li class="flex items-center">
+              <svg class="w-4 h-4 mx-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+              </svg>
+              <span class="text-black">Search</span>
+            </li>
+          </ol>
+        </nav>
+        
+        <!-- Page Header -->
+        <div class="mb-12">
+          <h1 class="text-4xl sm:text-5xl font-bold text-black mb-4">
+            Search
+          </h1>
+          <p class="text-lg text-gray-600 italic">
+            Search any article ...
+          </p>
+        </div>
+        
+        <!-- Search Input -->
+        <div class="mb-12">
+          <div class="relative">
+            <!-- Loading Animation -->
+            <div id="loading-spinner" class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none hidden">
+              <div class="animate-spin rounded-full h-5 w-5 border-2 border-gray-300 border-t-black"></div>
+            </div>
+            
+            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <svg class="h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </div>
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search"
+              class="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+            />
+          </div>
+        </div>
+        
+        <!-- Search Results -->
+        <div id="search-results" class="space-y-6">
+          <!-- Results will be populated by JavaScript -->
+        </div>
+        
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center py-12">
+          <p class="text-gray-600 text-lg">
+            No articles found matching your search.
+          </p>
+        </div>
+        
+        <!-- All Posts (shown initially) -->
+        <div id="all-posts" class="space-y-6">
+          <h2 class="text-2xl font-semibold text-black mb-6">All Articles</h2>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {allPosts.map((post) => {
+              const formattedDate = new Intl.DateTimeFormat('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              }).format(post.data.publishDate);
+              
+              return (
+                <article class="group relative bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <div class="flex flex-col h-full">
+                    <time datetime={post.data.publishDate.toISOString()} class="text-sm text-gray-500 mb-2">
+                      {formattedDate}
+                    </time>
+                    
+                    <h3 class="text-xl font-semibold text-black mb-3 group-hover:text-gray-600 transition-colors">
+                      <a href={`/posts/${post.slug}`} class="stretched-link">
+                        {post.data.title}
+                      </a>
+                    </h3>
+                    
+                    <p class="text-gray-600 mb-4 flex-grow leading-relaxed">
+                      {post.data.description}
+                    </p>
+                    
+                    {post.data.tags && post.data.tags.length > 0 && (
+                      <div class="flex flex-wrap gap-2 mt-auto">
+                        {post.data.tags.map((tag) => (
+                          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <Footer />
+  </div>
+</BaseLayout>
+
+<script define:vars={{ allPosts }}>
+  // Search functionality
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+  const noResults = document.getElementById('no-results');
+  const allPostsSection = document.getElementById('all-posts');
+  const loadingSpinner = document.getElementById('loading-spinner');
+  
+  // Prepare posts data for search
+  const posts = allPosts.map(post => ({
+    title: post.data.title,
+    description: post.data.description,
+    slug: post.slug,
+    tags: post.data.tags || [],
+    publishDate: post.data.publishDate,
+    content: `${post.data.title} ${post.data.description} ${(post.data.tags || []).join(' ')}`
+  }));
+  
+  function formatDate(dateString) {
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }).format(new Date(dateString));
+  }
+  
+  function createPostCard(post) {
+    const tagsHtml = post.tags.length > 0 
+      ? `<div class="flex flex-wrap gap-2 mt-auto">
+           ${post.tags.map(tag => 
+             `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">${tag}</span>`
+           ).join('')}
+         </div>`
+      : '';
+    
+    return `
+      <article class="group relative bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+        <div class="flex flex-col h-full">
+          <time datetime="${post.publishDate}" class="text-sm text-gray-500 mb-2">
+            ${formatDate(post.publishDate)}
+          </time>
+          
+          <h3 class="text-xl font-semibold text-black mb-3 group-hover:text-gray-600 transition-colors">
+            <a href="/posts/${post.slug}" class="stretched-link">
+              ${post.title}
+            </a>
+          </h3>
+          
+          <p class="text-gray-600 mb-4 flex-grow leading-relaxed">
+            ${post.description}
+          </p>
+          
+          ${tagsHtml}
+        </div>
+      </article>
+    `;
+  }
+  
+  function performSearch(query) {
+    // Show loading spinner
+    loadingSpinner.classList.remove('hidden');
+    
+    // Simulate search delay for better UX
+    setTimeout(() => {
+      loadingSpinner.classList.add('hidden');
+      
+      if (!query.trim()) {
+        // Show all posts when search is empty
+        searchResults.innerHTML = '';
+        searchResults.classList.add('hidden');
+        noResults.classList.add('hidden');
+        allPostsSection.classList.remove('hidden');
+        return;
+      }
+      
+      const filteredPosts = posts.filter(post => 
+        post.content.toLowerCase().includes(query.toLowerCase())
+      );
+      
+      allPostsSection.classList.add('hidden');
+      
+      if (filteredPosts.length === 0) {
+        searchResults.innerHTML = '';
+        searchResults.classList.add('hidden');
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+        searchResults.classList.remove('hidden');
+        
+        const resultsHtml = `
+          <h2 class="text-2xl font-semibold text-black mb-6">
+            Search Results (${filteredPosts.length})
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            ${filteredPosts.map(post => createPostCard(post)).join('')}
+          </div>
+        `;
+        
+        searchResults.innerHTML = resultsHtml;
+      }
+    }, 300); // 300ms delay for loading animation
+  }
+  
+  // Debounce function to limit search frequency
+  function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  
+  // Debounced search function
+  const debouncedSearch = debounce(performSearch, 300);
+  
+  // Add event listener for search input
+  searchInput.addEventListener('input', (e) => {
+    if (!query.trim()) {
+      // Show all posts when search is empty
+      searchResults.innerHTML = '';
+      searchResults.classList.add('hidden');
+      noResults.classList.add('hidden');
+      allPostsSection.classList.remove('hidden');
+      return;
+    }
+    
+    const filteredPosts = posts.filter(post => 
+      post.content.toLowerCase().includes(query.toLowerCase())
+    );
+    
+    allPostsSection.classList.add('hidden');
+    
+    if (filteredPosts.length === 0) {
+      searchResults.innerHTML = '';
+      searchResults.classList.add('hidden');
+      noResults.classList.remove('hidden');
+    } else {
+      noResults.classList.add('hidden');
+      searchResults.classList.remove('hidden');
+      
+      const resultsHtml = `
+        <h2 class="text-2xl font-semibold text-black mb-6">
+          Search Results (${filteredPosts.length})
+        </h2>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          ${filteredPosts.map(post => createPostCard(post)).join('')}
+        </div>
+      `;
+      
+      searchResults.innerHTML = resultsHtml;
+    }
+    debouncedSearch(e.target.value);
+  });
+  
+  // Handle search on page load if there's a query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialQuery = urlParams.get('q');
+  if (initialQuery) {
+    searchInput.value = initialQuery;
+    performSearch(initialQuery);
+  }
+</script>
+
+<style>
+  .stretched-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+</style>

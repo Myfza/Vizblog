@@ -1,0 +1,61 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  publishDate: Date;
+  slug: string;
+  tags?: string[];
+}
+
+const { title, description, publishDate, slug, tags } = Astro.props;
+
+const formattedDate = new Intl.DateTimeFormat('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(publishDate);
+---
+
+<article class="group relative bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+  <div class="flex flex-col h-full">
+    <!-- Date -->
+    <time datetime={publishDate.toISOString()} class="text-sm text-gray-500 mb-2">
+      {formattedDate}
+    </time>
+    
+    <!-- Title -->
+    <h2 class="text-xl font-semibold text-black mb-3 group-hover:text-gray-600 transition-colors">
+      <a href={`/posts/${slug}`} class="stretched-link">
+        {title}
+      </a>
+    </h2>
+    
+    <!-- Description -->
+    <p class="text-gray-600 mb-4 flex-grow leading-relaxed">
+      {description}
+    </p>
+    
+    <!-- Tags -->
+    {tags && tags.length > 0 && (
+      <div class="flex flex-wrap gap-2 mt-auto">
+        {tags.map((tag) => (
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
+            {tag}
+          </span>
+        ))}
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .stretched-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+</style>

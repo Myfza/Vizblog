@@ -1,7 +1,7 @@
 ---
 title: "Membangun Personal Branding di Era Digital"
 description: "Panduan singkat untuk membangun identitas digital yang otentik, konsisten, dan berdampak di tengah hiruk pikuk dunia online."
-publishDate: 21-07
+publishDate: 21-07-2025
 tags: ["personal branding", "digital identity", "pengembangan diri", "karier"]
 ---
 

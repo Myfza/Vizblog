@@ -1,7 +1,7 @@
 ---
 title: "Pengaruh AI di Seluruh Industri"
 description: "Artikel ini membahas bagaimana Kecerdasan Buatan (AI) merevolusi berbagai sektor, dari manufaktur hingga kesehatan, serta peluang dan tantangan yang menyertainya."
-publishDate: 2024-07-21
+publishDate: 21-07-2025
 tags: ["AI", "inovasi", "industri", "transformasi digital"]
 ---
 

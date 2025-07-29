@@ -12,36 +12,6 @@ A clean, minimalist blog built with [Astro](https://astro.build), featuring a st
 - **Mobile Responsive**: Beautiful experience across all devices
 - **Accessibility**: WCAG compliant with proper semantic HTML and keyboard navigation
 
-## 🚀 Project Structure
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/          # Reusable UI components
-│   │   ├── Header.astro     # Navigation with dark mode toggle
-│   │   ├── Footer.astro     # Footer with social links
-│   │   ├── Hero.astro       # Homepage hero section
-│   │   └── PostCard.astro   # Blog post preview card
-│   ├── content/             # Content collections
-│   │   ├── config.ts        # Content collection schemas
-│   │   └── posts/           # Blog post markdown files
-│   ├── layouts/             # Page layouts
-│   │   └── BaseLayout.astro # Base HTML structure with SEO
-│   ├── pages/               # File-based routing
-│   │   ├── index.astro      # Homepage
-│   │   ├── about.astro      # About page
-│   │   ├── posts/
-│   │   │   └── [...slug].astro  # Dynamic post pages
-│   │   └── rss.xml.js       # RSS feed generation
-│   └── env.d.ts
-├── astro.config.mjs         # Astro configuration
-├── tailwind.config.js       # Tailwind CSS configuration
-├── tsconfig.json           # TypeScript configuration
-└── package.json
-```
-
 ## 🛠️ Getting Started
 
 ### Prerequisites
